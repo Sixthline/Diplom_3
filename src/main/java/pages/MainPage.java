@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.Waiting;
 
 public class MainPage {
     private By loginButton = By.xpath(".//button[text()='Войти в аккаунт']");
@@ -18,6 +19,10 @@ public class MainPage {
         driver.findElement(loginButton).click();
     }
 
+    @Step
+    public void waitVisibilityOfMakeOrderButton(WebDriver driver, int time) {
+        Waiting.waitVisibilityOf(driver, orderButton, time);
+    }
     @Step("Нажатие кнопки Булки")
     public void clickBreadButton(WebDriver driver) {
         driver.findElement(breadButton).click();
