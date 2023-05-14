@@ -41,15 +41,15 @@ public class RegistrationTest {
     @DisplayName("Проверка успешной регистрации")
     public void successRegisterTest() {
         mainPage.clickLoginButton(driver);
-        waiting.waitVisibilityOfRegisterButton(driver, 1);
+        loginPage.waitVisibilityOfRegisterButton(driver, 1);
         loginPage.clickRegisterButton(driver);
-        waiting.waitVisibilityOfEmailField(driver, 1);
+        loginPage.waitVisibilityOfEmailField(driver, 1);
         registerPage.makeRegistration(driver, user.getName(), user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfRegisterButton(driver, 1);
+        loginPage.waitVisibilityOfRegisterButton(driver, 1);
 
         assertEquals(driver.getCurrentUrl(), "https://stellarburgers.nomoreparties.site/login");
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfMakeOrderButton(driver, 1);
+        mainPage.waitVisibilityOfMakeOrderButton(driver, 1);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
@@ -58,9 +58,9 @@ public class RegistrationTest {
     @DisplayName("Проверка появления сообщения с ошибкой при введении некорректного пароля")
     public void shortPasswordMakesErrorMessageTest() {
         mainPage.clickLoginButton(driver);
-        waiting.waitVisibilityOfRegisterButton(driver, 1);
+        loginPage.waitVisibilityOfRegisterButton(driver, 1);
         loginPage.clickRegisterButton(driver);
-        waiting.waitVisibilityOfEmailField(driver, 1);
+        loginPage.waitVisibilityOfEmailField(driver, 1);
         // Меняем пароль на некорректный (менее 6-ти символов)
         user.setPassword("four");
         registerPage.makeRegistration(driver, user.getName(), user.getEmail(), user.getPassword());

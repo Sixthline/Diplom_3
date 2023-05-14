@@ -1,6 +1,5 @@
 package client;
 
-import client.BaseApi;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import model.User;
@@ -14,26 +13,16 @@ public class UserApi extends BaseApi {
 
     @Step("Создание пользователя")
     public Response createUser(User user) {
-        return given()
-                .spec(spec)
-                .body(user)
-                .post(registerPath);
+        return given().spec(spec).body(user).post(registerPath);
     }
 
     @Step("Логин пользователя")
     public Response loginUser(User user) {
-        return given()
-                .spec(spec)
-                .body(user)
-                .post(loginPath);
+        return given().spec(spec).body(user).post(loginPath);
     }
 
     @Step("Удаление пользователя")
     public Response deleteUser(String token) {
-        return given()
-                .header("authorization", token)
-                .spec(spec)
-                .when()
-                .delete(userPath);
+        return given().header("authorization", token).spec(spec).when().delete(userPath);
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import util.Waiting;
 
 public class LoginPage {
     private By emailField = By.xpath(".//label[text()='Email']/../input");
@@ -18,6 +19,15 @@ public class LoginPage {
         driver.findElement(emailField).click();
         driver.findElement(emailField).clear();
         driver.findElement(emailField).sendKeys(email);
+    }
+
+    @Step
+    public void waitVisibilityOfRegisterButton(WebDriver driver, int time) {
+        Waiting.waitVisibilityOf(driver, registerButton, time);
+    }
+    @Step("Дожидаемся загрузки поля Email")
+    public void waitVisibilityOfEmailField(WebDriver driver, int time) {
+        Waiting.waitVisibilityOf(driver, emailField, time);
     }
 
     @Step("Заполнение Пароль")

@@ -45,7 +45,7 @@ public class PersonalAccountTest {
         headerPage.clickPersonalAccount(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
         headerPage.clickPersonalAccount(driver);
-        waiting.waitVisibilityOfExitButton(driver, 1);
+        accountPage.waitVisibilityOfExitButton(driver, 1);
         assertTrue(accountPage.isExitButtonVisible(driver));
     }
 
@@ -55,7 +55,7 @@ public class PersonalAccountTest {
         headerPage.clickPersonalAccount(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
         headerPage.clickPersonalAccount(driver);
-        waiting.waitVisibilityOfExitButton(driver, 1);
+        accountPage.waitVisibilityOfExitButton(driver, 1);
         headerPage.clickStellarBurgers(driver);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
@@ -67,7 +67,7 @@ public class PersonalAccountTest {
         headerPage.clickPersonalAccount(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
         headerPage.clickPersonalAccount(driver);
-        waiting.waitVisibilityOfExitButton(driver, 1);
+        accountPage.waitVisibilityOfExitButton(driver, 1);
         headerPage.clickConstructor(driver);
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
@@ -78,9 +78,9 @@ public class PersonalAccountTest {
         headerPage.clickPersonalAccount(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
         headerPage.clickPersonalAccount(driver);
-        waiting.waitVisibilityOfExitButton(driver, 2);
+        accountPage.waitVisibilityOfExitButton(driver, 2);
         accountPage.clickExitButton(driver);
-        waiting.waitVisibilityOfEmailField(driver, 1);
+        loginPage.waitVisibilityOfEmailField(driver, 1);
         assertTrue(loginPage.isSignInButtonVisible(driver));
     }
 

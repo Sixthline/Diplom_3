@@ -19,12 +19,10 @@ public class LoginTest {
     User user;
     UserApi userApi = new UserApi();
     MainPage mainPage = new MainPage();
-    AccountPage accountPage = new AccountPage();
     HeaderPage headerPage = new HeaderPage();
     LoginPage loginPage = new LoginPage();
     RegisterPage registerPage = new RegisterPage();
     ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
-    Waiting waiting = new Waiting();
 
     @Before
     public void setUp() {
@@ -43,7 +41,7 @@ public class LoginTest {
     public void loginToAccountWithLoginButton() {
         mainPage.clickLoginButton(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfMakeOrderButton(driver, 1);
+        mainPage.waitVisibilityOfMakeOrderButton(driver, 1);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
@@ -53,7 +51,7 @@ public class LoginTest {
     public void loginToAccountWithClickPersonalAccountButton() {
         headerPage.clickPersonalAccount(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfMakeOrderButton(driver, 1);
+        mainPage.waitVisibilityOfMakeOrderButton(driver, 1);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
@@ -65,7 +63,7 @@ public class LoginTest {
         loginPage.clickRegisterButton(driver);
         registerPage.clickSignInButton(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfMakeOrderButton(driver, 1);
+        mainPage.waitVisibilityOfMakeOrderButton(driver, 1);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
@@ -77,7 +75,7 @@ public class LoginTest {
         loginPage.clickResetPasswordButton(driver);
         resetPasswordPage.clickSignInButton(driver);
         loginPage.makeSignIn(driver, user.getEmail(), user.getPassword());
-        waiting.waitVisibilityOfMakeOrderButton(driver, 1);
+        mainPage.waitVisibilityOfMakeOrderButton(driver, 1);
 
         assertTrue(mainPage.isMakeOrderButtonVisible(driver));
     }
